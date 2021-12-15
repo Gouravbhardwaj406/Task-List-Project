@@ -1,0 +1,378 @@
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(179, 7, 156),
+    rgb(27, 220, 249)
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+.main {
+  padding-left: 75px ;
+  padding-bottom:100px;
+  padding-right:  75px;
+  display: flex;
+  height: 500px;
+}
+.sidebar1 {
+  height: 500px;
+  width: 250px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  background-color: #0063f7;
+  color: white;
+}
+.sidebar2 {
+  position: relative;
+  height: 500px;
+  width: 900px;
+  background-color: white;
+  overflow: hidden;
+}
+.homediv {
+  height: 500px;
+  width: 900px;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+}
+.list-heading {
+  margin-top: 25px;
+  margin-left: 25px;
+  font-size: 25px;
+}
+.project-list {
+  height: 0px;
+  width: 900px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  background-color: white;
+ 
+}
+
+.addprojectdisplay {
+  height: 0px;
+  width: 900px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  background-color: white;
+}
+h4 {
+  font-weight: 700;
+  text-align: center;
+  margin: 25px;
+}
+li {
+  margin: 25px;
+  font-weight: 500;
+  
+}
+h1 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+}
+.homedisplay {
+  margin-top: 0px;
+  background-image: url("./images/image1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+  height: 500px;
+}
+.home,
+.addproject,
+.myprojects {
+  display: flex;
+  height: 80px;
+  width: 100%;
+  line-height: 80px;
+
+  line-height: 80px;
+}
+
+.homelogo,
+.myprojectslogo,
+.addprojectlogo {
+  margin-top: 20px;
+  margin-left: 20px;
+  height: 40px;
+  width: 40px;
+  color: black;
+  border-radius: 50%;
+  background-color: white;
+  line-height: 40px;
+
+  text-align: justify;
+}
+.homelogo {
+  background-color: green;
+}
+.homeinfo,
+.myprojectsinfo,
+.addprojectinfo {
+  margin-top: 15px;
+  margin-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 30px;
+  border-radius: 4px;
+  line-height: 30px;
+  width: 150px;
+  background-color: white;
+  color: black;
+}
+.home:hover,
+.addproject:hover,
+.myprojects:hover {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.project-heading {
+  width: 97%;
+  margin: 20px;
+  background-color: white;
+  height: 250px;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-size: 25px;
+  vertical-align: middle;
+}
+.input-heading {
+  margin-top: 20px;
+}
+.addbutton {
+  margin-top: 25px;
+  margin-left: 550px;
+}
+h1 {
+  margin-left: 20px;
+}
+#input-projectname,
+#input-starting-date {
+  margin-left: 50px;
+}
+#input-technologyUsed,
+#input-completion-date {
+  margin-left: 60px;
+}
+#input-projectname,
+#input-technologyUsed,
+#input-starting-date,
+#input-completion-date {
+  width: 295px;
+  height: 40px;
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+#projectname,
+#technology,
+#starting-date,
+#completion-date {
+  margin-left: 50px;
+}
+#projectname,
+#technology {
+  width: 295px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 25px;
+  vertical-align: middle;
+}
+#starting-date,
+#completion-date {
+  width: 295px;
+  height: 40px;
+
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 25px;
+  vertical-align: middle;
+}
+#addToDo {
+  width: 150px;
+  height: 40px;
+  margin-top: 40px;
+  margin-left: 100px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 25px;
+  font-weight: 400;
+  color: white;
+  background-color: #1672ca;
+  vertical-align: middle;
+}
+.input-heading {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.paragraph-styling {
+  margin: 0px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px;
+  background-color: white;
+
+  width: 900px;
+  overflow: scroll;
+}
+
+.header {
+  padding-left: 75px;
+  font-size: 56px;
+  font-weight: 700;
+}
+.header-sub {
+  padding-bottom: 20px;
+  padding-left: 75px;
+  width: 900px;
+  border-bottom: 2px solid black;
+}
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 100px;
+  width: 900px;
+  background-color: black;
+  color: white;
+}
+.heading1 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  width: 900px;
+}
+
+.box1,
+.box2 {
+  background-color: black;
+  color: white;
+  overflow: hidden;
+  width: 170px;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  vertical-align: middle;
+}
+.box11,
+.box21 {
+  overflow: hidden;
+  width: 170px;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  vertical-align: middle;
+}
+.box3,
+.box4 {
+  background-color: black;
+  color: white;
+  width: 170px;
+  height: 40px;
+  margin-left: 10px;
+  font-size: 20px;
+  vertical-align: middle;
+}
+.box31,
+.box41 {
+  width: 165px;
+  height: 40px;
+  margin-left: 10px;
+  font-size: 20px;
+  vertical-align: middle;
+}
+.box5 {
+  background-color: black;
+  color: white;
+  width: 90px;
+  height: 40px;
+  margin-left: 10px;
+  font-size: 20px;
+  vertical-align: middle;
+}
+.box51 {
+  width: 90px;
+  height: 40px;
+  margin-left: 10px;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.exitt {
+  height: 30px;
+  line-height: 30px;
+  font-weight: bold;
+  background-color: red;
+}
+.complete {
+  height: 30px;
+  font-weight: bold;
+  line-height: 30px;
+  background-color: green;
+}
+
+.filter-options {
+  margin: 1rem;
+  position: relative;
+  height: 50px;
+  width: 100%;
+  font-size: 1.5rem;
+  overflow: hidden;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+}
+.filter-todo {
+  position: absolute;
+  right: 20rem;
+  top: 0;
+  color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: rgb(15, 77, 77);
+}
+.filter-todo1 {
+  position: absolute;
+  right: 9rem;
+  top: 0;
+}
+select {
+  color: #ff6f47;
+  width: 10rem;
+  cursor: pointer;
+  height: 2rem;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+}
