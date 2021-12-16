@@ -9,80 +9,51 @@
     <script type="module" src="index.js" defer="true"></script>
   </head>
   <body>
-    <header class="header">To-Do-List</header>
-    <div class="main">
-      <div class="sidebar1">
-        <div class="home">
-          <div class="homelogo circle"></div>
-          <div class="homeinfo">Home</div>
+   <header class="header">
+    Task App
+   </header>
+   <div class="main-body">
+     <div class="alert-box"></div>
+     <div class="new-task">
+        <div class="heading">New Task</div>
+        <div class="task-heading">
+          <div class="projectName">Project Name</div>
+          <div class="technologyName">Technology Name</div>
         </div>
-        <div class="addproject">
-          <div class="addprojectlogo circle"></div>
-          <div class="addprojectinfo">Add Project</div>
+        <div class="input-values">
+          <input class="inputproject" placeholder="Project name">
+          <select class="inputtechnology">
+            <option></option>
+            <option value="react">React</option>
+            <option value="angular">Angular</option>
+            <option value="nodejs">Nodejs</option>
+            <option value="dotnet">Dot net</option>
+          </select>
         </div>
-        <div class="myprojects">
-          <div class="myprojectslogo circle"></div>
-          <div class="myprojectsinfo">My Projects</div>
+        <div class="addButton">Create</div>
+     </div>
+     <div class="tasks">
+        <div class="alltasks-heading">
+          Tasks
         </div>
-      </div>
-      <div class="sidebar2">
-        <div class="homedisplay">
-          <h1>Welcome to Home Page</h1>
-          <h4>
-            Here you can create a detailed list projects to perform.also you can
-            perform certain operation on particular project such as project
-            completion, project removal.
-          </h4>
-          <ul type="disk">
-            <li>click on add project to add your project to your list</li>
-            <li>click on myprojects to view your project list</li>
-          </ul>
+        <div class="display-heading">
+          <div class="box1">projectName</div>
+          <div class="box2">Technology</div>
+          <div class="box3">status</div>
+          <div class="complete1">Actions</div>
         </div>
-        <div class="addprojectdisplay">
-          <div class="header">ADD Project</div>
-          <div class="header-sub">
-            kindly fill out the details to add your project.
+        <div class="display-box">
+          <div class="task-list">
+          
           </div>
-          <div class="input-heading">
-            <div id="input-projectname">Project Name</div>
-            <div id="input-technologyUsed">Technology used</div>
-          </div>
-          <div>
-            <input id="projectname" placeholder="Project Name" type="text" />
-            <input id="technology" placeholder="Technology used" type="text" />
-          </div>
-          <div class="input-heading">
-            <div id="input-starting-date">Starting Date</div>
-            <div id="input-completion-date">Completion Date</div>
-          </div>
-          <div>
-            <input id="starting-date" type="date" />
-            <input id="completion-date" type="date" />
-          </div>
-          <div class="addbutton">
-            <button id="addToDo" class="ToDo">add project</button>
+          <div class="footer">
+            <div class="footer1">1</div>
+            <div class="footer1">2</div>
+            <div class="footer1">3</div>
+            <div class="footer1">4</div>
           </div>
         </div>
-        <div class="project-list">
-          <div class="list-heading">Project List</div>
-          <div class="filter-options">
-            <div class="filter-todo">Filter</div>
-            <select class="filter-todo1">
-              <option value="all" selected>All</option>
-              <option value="completed">Completed</option>
-              <option value="pending">pending</option>
-            </select>
-          </div>
-          <div class="heading">
-            <div class="projectname box1">Project Name</div>
-            <div class="projectname box2">Technology used</div>
-            <div class="projectname box3">Starting Date</div>
-            <div class="projectname box4">End Date</div>
-            <div class="projectname box5">Action</div>
-          </div>
-          <div class="container" id="container"></div>
-        </div>
-      </div>
-    </div>
+     </div>
+   </div>
   </body>
 </html>

@@ -1,18 +1,30 @@
-let ERROR_MESSAGES = {
+let MESSAGES = {
     PROJECT_NAME_NOT_PROVIDED: 'Please provide project name',
     TECHNOLOGY_USED_NOT_PROVIDED: 'Please provide technology used',
     STARTING_DATE_NULL: 'Please provide starting date',
-    COMPLETION_DATE_NULL: 'Please provide completion date'
-
+    COMPLETION_DATE_NULL: 'Please provide completion date',
+    PROJECT_ADDED:"your task has been Added to the list",
+    COMPLETED:"Task completed"
 }
 
-let FILTERVALUES = {
-    ALL: "all",
-    COMPLETED: "completed",
-    PENDING: "pending"
-}
-let MESSAGES={
-    SUCCESS:"your Project has been Added to the list"
+
+
+
+let TYPE={
+    COMPLETE:"success",
+    ERROR:"failure",
+    DONE:"success"
 }
 
-export { ERROR_MESSAGES, FILTERVALUES,MESSAGES };
+let STATUS={
+    COMPLETED:"completed",
+    INPROGRESS:"In progress"
+}
+
+let ACTIONS={
+    CHOOSE:"choose",
+    EDIT:"edit",
+    COMPLETED:"completed"
+}
+
+export { MESSAGES ,TYPE,STATUS,ACTIONS};

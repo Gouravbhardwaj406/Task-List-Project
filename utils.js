@@ -1,34 +1,30 @@
-import { ERROR_MESSAGES, FILTERVALUES } from "./constants.js"
+import { MESSAGES,TYPE ,STATUS,ACTIONS} from "./constants.js"
 
 let projects = [];
 
 const validateProject = function (project) {
-  let error = [];
+  let message = [];
   if (!project.name) {
-    error.push(ERROR_MESSAGES.PROJECT_NAME_NOT_PROVIDED);
+    message.push(MESSAGES.PROJECT_NAME_NOT_PROVIDED);
   } else if (!project.technologyUsed) {
-    error.push(ERROR_MESSAGES.TECHNOLOGY_USED_NOT_PROVIDED);
-  } else if (!project.startingDate) {
-    error.push(ERROR_MESSAGES.STARTING_DATE_NULL);
-  } else if (!project.completionDate) {
-    error.push(ERROR_MESSAGES.COMPLETION_DATE_NULL);
-  } else {
-    return { valid: true, error };
+    message.push(MESSAGES.TECHNOLOGY_USED_NOT_PROVIDED);
+  }  else {
+    
+    message.push(MESSAGES.PROJECT_ADDED);
+    return { isValid: true,message};
   }
-  return { valid: false, error };
+  return { isValid: false, message };
 
 };
 
 const clearInputs = function () {
-  document.querySelector("#projectname").value = "";
-  document.querySelector("#technology").value = "";
-  document.querySelector("#starting-date").value = "";
-  document.querySelector("#completion-date").value = "";
+  document.querySelector(".inputproject").value = "";
+  document.querySelector(".inputtechnology").selectedIndex=0;
 };
 
 const addProject = function (project) {
-  project.status = "pending"
-  projects.push(project);
+  projects.push({...project,status:STATUS.INPROGRESS});
+  console.log(projects);
 };
 
 const createTag = function (tagName, insidevalue, tagClass, outertag) {
@@ -40,15 +36,19 @@ const createTag = function (tagName, insidevalue, tagClass, outertag) {
   insidevalue = "";
 };
 
-const completeButton = (tagName, tagClass, buttonName, outertag, project) => {
+const completeButton = (tagName, tagClass, buttonName, outertag, project,parentdiv,childdiv) => {
   let buttons = document.createElement(tagName);
   buttons.className = tagClass;
   buttons.innerHTML = buttonName;
   outertag.appendChild(buttons);
   buttons.addEventListener("click", function () {
     project.status = "completed";
-    console.log(projects);
+    
     outertag.removeChild(buttons);
+    parentdiv.removeChild(childdiv);
+    let message=[MESSAGES.COMPLETED];
+    alertBox(message,TYPE.DONE);
+    displayProjects();
   });
 };
 
@@ -63,34 +63,71 @@ const exitButton = function (tagName, tagClass, buttonName, outertag, project, p
   });
 };
 
-const projectDiv = function (project, parentDiv) {
+const projectDiv = function (project, parentDiv,index) {
   let divtag = document.createElement("div");
   divtag.className = "heading1";
+  if(index%2===0)
+  {
+    divtag.classList.add("colored")
+  }
   parentDiv.appendChild(divtag);
+  console.log("div created");
   createTag("div", project.name, "box11", divtag);
   createTag("div", project.technologyUsed, "box21", divtag);
-  createTag("div", project.startingDate, "box31", divtag);
-  createTag("div", project.completionDate, "box41", divtag);
-  let exitdiv = document.createElement("div");
-  exitdiv.class = "box51";
-  divtag.appendChild(exitdiv);
-  if (project.status === "pending") {
-    completeButton("BUTTON", "complete", "completed", exitdiv, project, parentDiv, divtag);
-  }
-  exitButton("BUTTON", "exitt", "Remove", exitdiv, project, parentDiv, divtag);
+  createTag("div",project.status,"box31",divtag);
+  if(project.status===STATUS.INPROGRESS)
+  {
+    let actions=Object.values(ACTIONS);
+    let selectList = document.createElement("select");
+    selectList.className= "complete3";
+    divtag.appendChild(selectList);
+  for(let action of actions)
+  {
+    let option = document.createElement("option");
+    option.value = action;
+    option.text = action;
+    selectList.appendChild(option);
+  } 
+    selectList.addEventListener("click",function()
+    {
+      let index=selectList.selectedIndex;
+      if(selectList.options[index].value==="edit")
+      {
+        document.querySelector(".inputproject").value=project.name;
+        projects.splice(projects.indexOf(project),1);
+        parentDiv.removeChild(divtag);
+        displayProjects
+      }
+      else if(selectList.options[index].value==="completed")
+      {
+        project.status=STATUS.COMPLETED;
+        displayProjects();
+      }
+    })
+  }  
+  
+
+  // let exitdiv = document.createElement("div");
+
+  // exitdiv.class = "box51";
+  // divtag.appendChild(exitdiv);
+  // if (project.status === STATUS.INPROGRESS) {
+  //   completeButton("div", "complete", "completed", exitdiv, project, parentDiv, divtag,parentDiv,divtag);
+  // }
+  
 }
 
-const displayProjects = function (filter) {
-  let filteredArray;
-  if (filter === FILTERVALUES.ALL) {
-    filteredArray = projects;
-  } else {
-    filteredArray = filterOptions(filter);
-  }
-  let mainDiv = document.querySelector(".container");
+const displayProjects = function () {
+  let inProgress=filterOptions(STATUS.INPROGRESS);
+  let done=filterOptions(STATUS.COMPLETED);
+  let completeArray=inProgress.concat(done);
+  console.log(completeArray);
+  let mainDiv = document.querySelector(".task-list");
   mainDiv.innerHTML = "";
-  for (let project of filteredArray) {
-    projectDiv(project, mainDiv);
+  for (let project of completeArray) {
+    let index=completeArray.indexOf(project);
+    
+    projectDiv(project, mainDiv,index);
   }
 };
 
@@ -98,19 +135,17 @@ const filterOptions = function (filter) {
   return projects.filter(e => e.status === filter)
 };
 
-const filterProjects = function () {
-  let filteroption = document.querySelector(".filter-todo1");
-  filteroption.addEventListener("click", function (e) {
-    displayProjects(e.target.value);
-  });
-};
 
-const displaydiv = function (input1, input2, input3, input4, input5, height1, height2) {
-  document.querySelector(input1).style.background = "green";
-  document.querySelector(input2).style.height = height1
-  document.querySelector(input3).style.background = "white";
-  document.querySelector(input4).style.height = height2
-  document.querySelector(input5).style.background = "white";
+const alertBox=async function(message,messageType)
+{
+  let parentdiv=document.querySelector(".alert-box");
+  let childdiv=document.createElement("div");
+  childdiv.innerHTML=message;
+  childdiv.className=messageType;
+  parentdiv.appendChild(childdiv);
+  setTimeout(function()
+  {
+    parentdiv.removeChild(childdiv)
+  },2000);
 }
-
-export { projects, validateProject, addProject, clearInputs, filterOptions, displayProjects, filterProjects, completeButton, exitButton, createTag, displaydiv };
+export { projects, validateProject, addProject, clearInputs, filterOptions, displayProjects, completeButton, exitButton, createTag,alertBox};
