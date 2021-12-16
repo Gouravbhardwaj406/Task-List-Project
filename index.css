@@ -178,8 +178,7 @@ margin-bottom: 20px;
 .display-heading{
   padding-left: 10px;
   display:flex;
-  background-color: black;
-  color: white;
+
 }
 
 .heading1{
@@ -208,10 +207,19 @@ margin-bottom: 20px;
   border-radius: 5px;
   margin: 5px;
 }
+.action-heading{
+  overflow: hidden;
+  height: 35px;
+  padding-left:50px; 
+  font-size: 20px;
+  line-height: 35px;
+  margin:0px;
+}
 .complete3{
   margin-left:30px;
   line-height: 35px;
-
+background-color: rgb(0, 167, 244);
+color: white;
   
   font-size: 20px;
   font-weight: 400;
