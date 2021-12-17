@@ -87,7 +87,7 @@ const displayProjects = function (page) {
   let mainDiv = document.querySelector(".task-list");
   mainDiv.innerHTML = "";
   for (let project of pageprojects) {
-    let index = projects.indexOf(project);
+    let index = pageprojects.indexOf(project);
     projectDiv(project, mainDiv, index);
   }
 };
