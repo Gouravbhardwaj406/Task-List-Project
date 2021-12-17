@@ -59,7 +59,7 @@ const actionList = function (parentDiv, divtag, project) {
       displayProjects();
     }
     else {
-      projects.splice(projects.indexOf(project));
+      projects.splice(projects.indexOf(project),1);
       displayProjects();
     }
   })
