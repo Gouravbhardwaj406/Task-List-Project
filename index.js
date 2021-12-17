@@ -1,5 +1,6 @@
 import { projects, validateProject, clearInputs, addProject, createTag, actionList, projectDiv, displayProjects, alertBox } from "./utils.js";
 import { MESSAGES, TYPE, STATUS, ACTIONS } from "./constants.js"
+let currentPage = parseInt(document.querySelector(".current").innerHTML);
 
 let addButton = document.querySelector(".addButton");
 addButton.addEventListener("click", function () {
@@ -15,13 +16,32 @@ addButton.addEventListener("click", function () {
     addProject(project);
     clearInputs();
     alertBox(message, TYPE.COMPLETE);
-    displayProjects();
+    displayProjects(currentPage);
   }
   else {
     alertBox(message, TYPE.ERROR);
   }
 })
 
+
+
+let previousPage = document.querySelector(".previous");
+let nextPage = document.querySelector(".next");
+previousPage.addEventListener("click", function () {
+  if (currentPage > 1) {
+    currentPage--;
+    document.querySelector(".current").innerHTML = currentPage;
+    displayProjects(currentPage);
+  }
+})
+
+nextPage.addEventListener("click", function () {
+  if (currentPage < (projects.length / 5)) {
+    currentPage++;
+    document.querySelector(".current").innerHTML = currentPage;
+    displayProjects(currentPage);
+  }
+})
 
 
 

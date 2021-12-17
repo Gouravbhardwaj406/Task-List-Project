@@ -9,7 +9,6 @@ const validateProject = function (project) {
   } else if (!project.technologyUsed) {
     message.push(MESSAGES.TECHNOLOGY_USED_NOT_PROVIDED);
   } else {
-
     message.push(MESSAGES.PROJECT_ADDED);
     return { isValid: true, message };
   }
@@ -22,7 +21,6 @@ const clearInputs = function () {
 };
 const addProject = function (project) {
   projects.push({ ...project, status: STATUS.INPROGRESS });
-  console.log(projects);
 };
 const createTag = function (tagName, insidevalue, tagClass, outertag) {
   let temptag = document.createElement(tagName);
@@ -35,6 +33,7 @@ const createTag = function (tagName, insidevalue, tagClass, outertag) {
 const actionList = function (parentDiv, divtag, project) {
   let actions = Object.values(ACTIONS);
   let selectList = document.createElement("select");
+  let pageIndex = parseInt(document.querySelector(".current").innerHTML);
   selectList.className = "complete3";
   divtag.appendChild(selectList);
   for (let action of actions) {
@@ -52,15 +51,16 @@ const actionList = function (parentDiv, divtag, project) {
       document.querySelector(".inputproject").value = project.name;
       projects.splice(projects.indexOf(project), 1);
       parentDiv.removeChild(divtag);
-      displayProjects();
+      displayProjects(pageIndex);
     }
     else if (selectList.options[index].value === ACTIONS.COMPLETED) {
       project.status = STATUS.COMPLETED;
-      displayProjects();
+      alertBox(MESSAGES.COMPLETED,TYPE.COMPLETE);
+      displayProjects(pageIndex);
     }
     else {
-      projects.splice(projects.indexOf(project),1);
-      displayProjects();
+      projects.splice(projects.indexOf(project), 1);
+      displayProjects(pageIndex);
     }
   })
 }
@@ -71,24 +71,23 @@ const projectDiv = function (project, parentDiv, index) {
     divtag.classList.add("colored")
   }
   parentDiv.appendChild(divtag);
-  console.log("div created");
   createTag("div", project.name, "box11", divtag);
   createTag("div", project.technologyUsed, "box21", divtag);
   createTag("div", project.status, "box31", divtag);
   if (project.status === STATUS.INPROGRESS) {
-    actionList(parentDiv, divtag, project);
+    actionList(parentDiv, divtag, project, index);
   }
 }
-const displayProjects = function () {
+const displayProjects = function (page) {
   let inProgress = filterOptions(STATUS.INPROGRESS);
   let done = filterOptions(STATUS.COMPLETED);
   let completeArray = inProgress.concat(done);
-  console.log(completeArray);
+  let pageIndex = page - 1;
+  let pageprojects = completeArray.slice((5 * pageIndex), (5 * pageIndex + 5));
   let mainDiv = document.querySelector(".task-list");
   mainDiv.innerHTML = "";
-  for (let project of completeArray) {
-    let index = completeArray.indexOf(project);
-
+  for (let project of pageprojects) {
+    let index = projects.indexOf(project);
     projectDiv(project, mainDiv, index);
   }
 };
