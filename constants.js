@@ -4,7 +4,8 @@ let MESSAGES = {
     STARTING_DATE_NULL: 'Please provide starting date',
     COMPLETION_DATE_NULL: 'Please provide completion date',
     PROJECT_ADDED: "your task has been Added to the list",
-    COMPLETED: "Task completed"
+    COMPLETED: "Task completed",
+    REMOVED:"Task Removed"
 }
 
 let TYPE = {

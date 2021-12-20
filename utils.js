@@ -55,11 +55,12 @@ const actionList = function (parentDiv, divtag, project) {
     }
     else if (selectList.options[index].value === ACTIONS.COMPLETED) {
       project.status = STATUS.COMPLETED;
-      alertBox(MESSAGES.COMPLETED,TYPE.COMPLETE);
+      alertBox(MESSAGES.COMPLETED, TYPE.COMPLETE);
       displayProjects(pageIndex);
     }
     else {
       projects.splice(projects.indexOf(project), 1);
+      alertBox(MESSAGES.REMOVED,TYPE.DONE)
       displayProjects(pageIndex);
     }
   })

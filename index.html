@@ -9,31 +9,35 @@
     <script type="module" src="index.js" defer="true"></script>
   </head>
   <body>
+    <div class="alert-box"></div>
     <header class="header">Task App</header>
     <div class="main-body">
-      <div class="alert-box"></div>
+      
       <div class="new-task">
         <div class="heading">New Task</div>
-        <div class="task-heading">
-          <div class="projectName">Project Name</div>
-          <div class="technologyName">Technology Name</div>
+        <div class="inputbox">
+          <div class="project-name">
+            <div class="projectName">Project Name</div>
+            <input class="inputproject" placeholder="Project name" />
+          </div>
+          <div class="technology-name">
+            <div class="technologyName">Technology Name</div>
+            <select class="inputtechnology">
+              <option></option>
+              <option value="react">React</option>
+              <option value="angular">Angular</option>
+              <option value="nodejs">Nodejs</option>
+              <option value="dotnet">Dot net</option>
+            </select>
+          </div>
+          <div class="addButton">Create</div>
         </div>
-        <div class="input-values">
-          <input class="inputproject" placeholder="Project name" />
-          <select class="inputtechnology">
-            <option></option>
-            <option value="react">React</option>
-            <option value="angular">Angular</option>
-            <option value="nodejs">Nodejs</option>
-            <option value="dotnet">Dot net</option>
-          </select>
-        </div>
-        <div class="addButton">Create</div>
+       
       </div>
       <div class="tasks">
         <div class="alltasks-heading">Tasks</div>
         <div class="display-heading">
-          <div class="box1">projectName</div>
+          <div class="box1">ProjectName</div>
           <div class="box2">Technology</div>
           <div class="box3">status</div>
           <div class="action-heading">Actions</div>
@@ -41,9 +45,9 @@
         <div class="display-box">
           <div class="task-list"></div>
           <div class="footer">
-            <div class="footer1 first previous">prev</div>
+            <div class="footer1 first previous">Prev</div>
             <div class="footer1 current">1</div>
-            <div class="footer1 next">next</div>
+            <div class="footer1 next">Next</div>
           </div>
         </div>
       </div>
