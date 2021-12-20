@@ -1,8 +1,8 @@
 import { MESSAGES, TYPE, STATUS, ACTIONS } from "./constants.js"
 
-let projects = [];
+export let projects = [];
 
-const validateProject = function (project) {
+export const validateProject = function (project) {
   let message = [];
   if (!project.name) {
     message.push(MESSAGES.PROJECT_NAME_NOT_PROVIDED);
@@ -15,11 +15,11 @@ const validateProject = function (project) {
   return { isValid: false, message };
 
 };
-const clearInputs = function () {
+export const clearInputs = function () {
   document.querySelector(".inputproject").value = "";
   document.querySelector(".inputtechnology").selectedIndex = 0;
 };
-const addProject = function (project) {
+export const addProject = function (project) {
   projects.push({ ...project, status: STATUS.INPROGRESS });
 };
 const createTag = function (tagName, insidevalue, tagClass, outertag) {
@@ -79,10 +79,9 @@ const projectDiv = function (project, parentDiv, index) {
     actionList(parentDiv, divtag, project, index);
   }
 }
-const displayProjects = function (page) {
-  let inProgress = filterOptions(STATUS.INPROGRESS);
-  let done = filterOptions(STATUS.COMPLETED);
-  let completeArray = inProgress.concat(done);
+export const displayProjects = function (page) {
+ 
+  let completeArray = projects.sort(function(a,b){return a.status<b.status?-1:1});
   let pageIndex = page - 1;
   let pageprojects = completeArray.slice((5 * pageIndex), (5 * pageIndex + 5));
   let mainDiv = document.querySelector(".task-list");
@@ -92,10 +91,8 @@ const displayProjects = function (page) {
     projectDiv(project, mainDiv, index);
   }
 };
-const filterOptions = function (filter) {
-  return projects.filter(e => e.status === filter)
-};
-const alertBox = async function (message, messageType) {
+
+export const alertBox = async function (message, messageType) {
   let parentdiv = document.querySelector(".alert-box");
   let childdiv = document.createElement("div");
   childdiv.innerHTML = message;
@@ -105,6 +102,4 @@ const alertBox = async function (message, messageType) {
     parentdiv.removeChild(childdiv)
   }, 2000);
 }
-export {
-  projects, validateProject, clearInputs, addProject, createTag, actionList, projectDiv, displayProjects, alertBox
-}
+

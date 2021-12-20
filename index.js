@@ -1,4 +1,4 @@
-import { projects, validateProject, clearInputs, addProject, createTag, actionList, projectDiv, displayProjects, alertBox } from "./utils.js";
+import { projects, validateProject, clearInputs, addProject,  displayProjects, alertBox } from "./utils.js";
 import { MESSAGES, TYPE, STATUS, ACTIONS } from "./constants.js"
 let currentPage = parseInt(document.querySelector(".current").innerHTML);
 
